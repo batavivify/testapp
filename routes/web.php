@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+Route::get('/', 'homeController@welcome')->name('welcome');
 
+Route::get('/login', 'HomeController@login')->name('login');
+Route::post('/check-login', 'HomeController@checkLogin')->name('check.login');
+Route::get('/logout', 'HomeController@logout')->name('logout');
 
 
 Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');

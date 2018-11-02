@@ -4,9 +4,13 @@
     </head>
 <body>
     <div class="container">
-        @if(!empty($message))
-            <div class="alert alert-success"> {{ $message }}</div>
+
+        @if(Auth::user())
+            <div class="alert alert-success">{{$user->first_name}}</div>
         @endif
-    </div>
+
+            <a href="{{ route('logout') }}">Logout</a>
+    </div> 
+
 </body>
 </html>
