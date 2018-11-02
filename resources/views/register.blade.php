@@ -27,7 +27,7 @@
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h2>Log in</h2>
+                            <h2>User Registration</h2>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
@@ -38,10 +38,27 @@
                                 <label for="password">Password</label>
                                 <input type="password" id="password" name="password" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label for="first_name">First name</label>
+                                <input type="text" id="first_name" name="first_name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last name</label>
+                                <input type="text" id="last_name" name="last_name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <select name="country" id="country">
+
+                                </select>
+                            </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{route('register')}}">Register</a>
-                            <button type="submit" class="btn btn-primary float-right">Log in</button>
+                            <button type="submit" class="btn btn-primary float-right">Create account</button>
                         </div>
                     </div>
                 </form>

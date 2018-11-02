@@ -13,29 +13,21 @@ class HomeController extends Controller
         return view('welcome');
     }
 
-
     public function login()
     {
 
-        if(Auth::check()) {
-            return redirect()->route('home');
-        } else {
             return view('login');
-        }
-
 
     }
 
     public function home()
     {
-
         return view('homepage', [
             "user" => Auth::user(),
         ]);
     }
 
-
-    public function checklogin(Request $request)
+    public function checkLogin(Request $request)
     {
         $this->validate($request, [
             'email'         => 'required|email',
@@ -52,13 +44,17 @@ class HomeController extends Controller
         } else {
             return back()->with('error', 'Ooups, it seems like I dont know you :( ');
         }
-
     }
 
     public function logout()
     {
         Auth::logout();
         return redirect()->route('welcome');
+    }
+
+    public function register()
+    {
+        return view('register');
     }
 
 

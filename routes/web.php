@@ -13,9 +13,13 @@
 
 Route::get('/', 'homeController@welcome')->name('welcome');
 
-Route::get('/login', 'HomeController@login')->name('login');
-Route::post('/check-login', 'HomeController@checkLogin')->name('check.login');
-Route::get('/logout', 'HomeController@logout')->name('logout');
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/login', 'HomeController@login')->name('login');
+    Route::get('/register', 'HomeController@register')->name('register');
+    Route::post('/check-login', 'HomeController@checkLogin')->name('check.login');
+});
 
-
-Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@home')->name('home');
+    Route::get('/logout', 'HomeController@logout')->name('logout');
+});
