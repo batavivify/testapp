@@ -1,14 +1,12 @@
-<html>
-    <head>
+@extends('layouts.app')
 
-    </head>
-<body>
-    <div class="container">
-        @if(Auth::user())
-            <div class="alert alert-success">{{$user->first_name}}</div>
-        @endif
-            <a href="{{ route('logout') }}">Logout</a>
-    </div> 
+@section('content')
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-12">
+                <h3>Hello user!</h3>
+            </div>
+        </div>
+    </div>
 
-</body>
-</html>
+@endsection
