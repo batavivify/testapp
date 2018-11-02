@@ -65,6 +65,16 @@ class HomeController extends Controller
 
     public function userStore(Request $request)
     {
+
+        $this->validate($request, [
+            'email'         => 'required|email|unique:users',
+            'password'      => 'required|min:6',
+            'first_name'    => 'required|alpha|min:2',
+            'last_name'     => 'required|alpha|min:2',
+            'company'       => 'required|min:2',
+            'country'       => 'required',
+        ]);
+
         $data = $request->all();
 
         $get_password = $data['password'];
