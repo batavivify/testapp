@@ -23,7 +23,7 @@
                     </div>
                 @endif
 
-                <form action="{{route('check.login')}}" method="post">
+                <form action="{{route('user.store')}}" method="post">
                     @csrf
                     <div class="card">
                         <div class="card-header">
@@ -53,7 +53,9 @@
                             <div class="form-group">
                                 <label for="country">Country</label>
                                 <select name="country" id="country">
-
+                                    @foreach($countries as $country)
+                                        <option value="{{$country}}">{{$country}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

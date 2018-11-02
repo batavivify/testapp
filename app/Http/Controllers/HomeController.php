@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -16,7 +18,7 @@ class HomeController extends Controller
     public function login()
     {
 
-            return view('login');
+        return view('login');
 
     }
 
@@ -54,7 +56,36 @@ class HomeController extends Controller
 
     public function register()
     {
-        return view('register');
+        $countries = ['Serbia', 'Bosnia and Herzegovina', 'Montenegro', 'Macedonia', 'Romania', 'Bulgaria'];
+
+        return view('register', [
+            "countries" => $countries
+            ]);
+    }
+
+    public function userStore(Request $request)
+    {
+        $data = $request->all();
+
+        $get_password = $data['password'];
+        $password = Hash::make($get_password);
+
+        $user = new User;
+
+        $user->email = $data['email'];
+        $user->password = $password;
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->company = $data['company'];
+        $user->country = $data['country'];
+
+        $user->save($data);
+
+        Auth::login($user);
+
+        return redirect()->route('home');
+
+
     }
 
 
