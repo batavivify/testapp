@@ -9,7 +9,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('homepage')->with('message', 'Hello world');
+        return view('homepage')->with('message', 'Hello world!');
     }
 
 
