@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::post('/check-login', 'HomeController@login')->name('check.login');
+
 
 
 Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
