@@ -17,6 +17,4 @@ Route::get('/', function () {
 
 
 
-Route::get('/home', function () {
-    return view('homepage');
-})->middleware('auth');
+Route::get('/home', 'HomeController@home')->middleware('auth')->name('home');
