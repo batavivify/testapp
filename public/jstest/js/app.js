@@ -86,3 +86,36 @@ console.log(sara.getFullName());
 
 
 console.log(john.staticMethod());
+
+
+
+// ONE FUN PROMISE :)
+
+var isVivifyhappy = true;
+
+var willIGetAJob = new Promise(
+  function (resolve, reject) {
+      if (isVivifyhappy) {
+          var job = {
+              position: 'Junior web dev',
+              salary: 'just fine!'
+          };
+          resolve(job);
+      } else {
+          var reason = new Error('Vivify is not happy :(');
+          reject(reason);
+      }
+  }
+);
+
+var askVivify = function() {
+    willIGetAJob
+        .then(function (fulfilled) {
+            console.log(fulfilled);
+        })
+        .catch(function (error){
+            console.log(error.message);
+        })
+};
+
+askVivify();
