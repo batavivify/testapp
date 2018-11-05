@@ -119,3 +119,27 @@ var askVivify = function() {
 };
 
 askVivify();
+
+
+
+// CALLBACKS
+
+const vivifiers = [
+    {name: 'Nemanja'},
+    {name: 'Branko'},
+    {name: 'Elena'},
+    {name: 'Dragan'},
+];
+
+function getVivifiers() {
+    setTimeout(function() {
+        let output = '';
+            vivifiers.forEach(function(vivifier){
+                output += `<li>${vivifier.name}</li>`
+            });
+            document.body.innerHTML = output;
+    }, 2000);
+}
+
+
+getVivifiers();
