@@ -1,0 +1,1 @@
+var after = 'Im from after.js! ';
