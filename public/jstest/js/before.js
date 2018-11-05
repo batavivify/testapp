@@ -1,0 +1,1 @@
+var before = 'Im from before.js! ';
