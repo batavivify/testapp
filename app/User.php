@@ -12,13 +12,22 @@ class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
+    const COUNTRIES = [
+        'Serbia',
+        'Bosnia and Herzegovina',
+        'Montenegro',
+        'Macedonia',
+        'Romania',
+        'Bulgaria',
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'company', 'country'
+        'email', 'first_name', 'last_name', 'email', 'password', 'company', 'country'
     ];
 
     /**

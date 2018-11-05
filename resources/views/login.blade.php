@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{route('register')}}">Register</a>
+                            <a href="{{route('user.create')}}">Register</a>
                             <button type="submit" class="btn btn-primary float-right">Log in</button>
                         </div>
                     </div>
