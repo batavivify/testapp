@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'homeController@welcome')->name('welcome');
+
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/login', 'AuthController@login')->name('login');
+    Route::post('/check-login', 'AuthController@checkLogin')->name('check.login');
+    Route::get('/user', 'UserController@create')->name('user.create');
+    Route::post('/user', 'UserController@store')->name('user.store');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@home')->name('home');
+    Route::get('/logout', 'AuthController@logout')->name('logout');
 });
