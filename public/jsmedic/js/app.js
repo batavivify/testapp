@@ -15,5 +15,20 @@ console.log("Pacijent", patient.firstname, "je izabrao", chooseDoctor, "za svog 
 
 
 // new bloodSugarExam
-const bloodSugarExam = doctor.scheduleBloodSugarExamination(doctor, patient);
-console.log(bloodSugarExam);
+const bloodSugarExam = doctor.scheduleSugar(doctor, patient);
+console.log("Predled merenja secera u krvi je zakazan:", bloodSugarExam);
+
+
+// new bloodPresureExam
+const bloodPresureExam = doctor.schedulePresure(doctor, patient);
+console.log("Predled merenja pritiska je zakazan:", bloodPresureExam);
+
+
+// patient perform sugar exam
+const sugarResults = Patient.performSugar();
+console.log("Pacijent je obavio merenje secera u krvi. Rezultati su:", sugarResults);
+
+
+// patient perform presure exam
+const presureResults = Patient.performPressure();
+console.log("Pacijent je obavio merenje krvnog pritiska. Rezultati su:", presureResults);
