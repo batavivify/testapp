@@ -8,7 +8,7 @@ class Doctor {
     }
 
     addPatient(patient) {
-        var patients = [];
+        const patients = [];
         this.patient = patient;
         patients.push(this.patient);
         console.log("Pacijenti koje ovaj doktor ima:", patients);
@@ -27,7 +27,7 @@ class Doctor {
 
 class Patient {
     constructor(firstName, lastName, idNumber, idMedical) {
-        this.firstname = firstName;
+        this.firstName = firstName;
         this.lastname = lastName;
         this.idNumber = idNumber;
         this.idMedical = idMedical;
@@ -99,4 +99,42 @@ class Pressure extends Examination {
     getPulse() {
         return this.pulse;
     }
+}
+
+class Logger {
+
+    static now() {
+        const currentDate = new Date();
+
+        const date = currentDate.getDate();
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
+        const hour = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+
+        const dateString = "[ " +date + "." +(month + 1) + "." + year + hour + ":" + minutes + " ]";
+
+        return dateString;
+    }
+
+    static makeLog(data) {
+
+        let textFile = null,
+            makeTextFile = function (text) {
+                const data = new Blob([text], {type: 'text/plain'});
+
+                if (textFile !== null) {
+                    window.URL.revokeObjectURL(textFile);
+                }
+
+                textFile = window.URL.createObjectURL(data);
+                return textFile;
+            };
+
+        // generate file
+        const link = document.getElementById('downloadlink');
+        link.href = makeTextFile(data);
+
+    };
+
 }
