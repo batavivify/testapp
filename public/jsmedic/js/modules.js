@@ -133,7 +133,7 @@ class Logger {
 
         // generate file
         const link = document.getElementById('downloadlink');
-        link.href = makeTextFile(data);
+        link.href = makeTextFile(data.join(""));
 
     };
 
