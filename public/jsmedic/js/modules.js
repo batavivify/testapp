@@ -1,10 +1,21 @@
-class Doctor {
-
-    constructor(firstName, lastName, specialty) {
-        // this.patients = [];
+class Person {
+    constructor(firstName, lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.specialty = specialty
+    }
+
+    getFirstName() {
+        return this.firstName;
+    }
+
+}
+
+
+class Doctor extends Person {
+
+    constructor(firstName, lastName, specialty) {
+        super(firstName, lastName);
+        this.specialty = specialty;
     }
 
     addPatient(patient) {
@@ -14,21 +25,19 @@ class Doctor {
         console.log("Pacijenti koje ovaj doktor ima:", patients);
     }
 
-    scheduleSugar(doctor, patient) {
-        const scheduled = new Sugar(doctor, patient, '01-01-2018', '01-01-2018');
-        return scheduled;
+    logDoctorCreated() {
+        return [ Logger.now() + " Kreiran je doktor: " + doctor.getFirstName() + "\n"];
     }
 
-    schedulePresure(doctor, patient) {
-        const scheduled = new Pressure(doctor, patient, '02-02-2018');
-        return scheduled;
+    logDoctorChoosen() {
+        return [ Logger.now() + " Pacijent " + patient.getFirstName() + " je izabrao doktora " + doctor.getFirstName() + "\n"];
     }
+
 }
 
-class Patient {
+class Patient extends Person {
     constructor(firstName, lastName, idNumber, idMedical) {
-        this.firstName = firstName;
-        this.lastname = lastName;
+        super(firstName, lastName);
         this.idNumber = idNumber;
         this.idMedical = idMedical;
     }
@@ -39,17 +48,14 @@ class Patient {
         return `${this.doctor.firstName}`
     }
 
-    static performSugar() {
-        const perform = new Sugar(patient, doctor,'01-01-2018', '01-01-2018');
-        return perform.simulate();
+    logPatientCreated() {
+        return [ Logger.now() + " Kreiran je pacijent " + patient.getFirstName() + "\n"];
     }
 
-    static performPressure() {
-        const perform = new Pressure(patient, doctor, '02-02-2018');
-        perform.simulate();
-        const results = [perform.getLowerValue(), perform.getUpperValue(), perform.getPulse()];
-        return results;
+    logPatientExam() {
+        return [ Logger.now() + " Pacijent " + patient.getFirstName() + " je obavio lekarski pregled" + "\n"];
     }
+
 
 }
 
@@ -70,6 +76,9 @@ class Sugar extends Examination {
         this.lastMealAt = lastMealAt;
     }
 
+    performSugar() {
+        return this.simulate();
+    }
 
     simulate() {
         return this.value = Math.round(Math.random() * (30 + 60)) / 10;
@@ -82,23 +91,18 @@ class Pressure extends Examination {
         super(patient, doctor, scheduleTime);
     }
 
+    performPressure() {
+        return this.simulate();
+    }
+
     simulate() {
         this.lowerValue = Math.floor(Math.random() * 110) + 60;
         this.upperValue = Math.floor(Math.random() * 140) + 110;
         this.pulse = Math.round(Math.random() * (60 + 120)) / 10;
+
+        return [this.lowerValue, this.upperValue, this.pulse];
     }
 
-    getLowerValue() {
-        return this.lowerValue;
-    }
-
-    getUpperValue() {
-        return this.upperValue;
-    }
-
-    getPulse() {
-        return this.pulse;
-    }
 }
 
 class Logger {
