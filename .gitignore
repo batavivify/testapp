@@ -13,3 +13,15 @@ npm-debug.log
 yarn-error.log
 .env
 .phpunit.result.cache
+
+\.DS_Store
+
+public/jsmedic/\.idea/jsmedic\.iml
+
+public/jsmedic/\.idea/misc\.xml
+
+public/jsmedic/\.idea/modules\.xml
+
+public/jsmedic/\.idea/vcs\.xml
+
+public/jsmedic/\.idea/workspace\.xml
